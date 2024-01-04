@@ -33,40 +33,65 @@ classroom = [
     },
 ]
 
-
+def helper(name):
+    count=0
+    for i in classroom:
+        if(i['name']==name):
+            return count
+        count+=1
+    return -1 
+    pass
 def add_student(name, email=None):
-    """Add a new student to the classroom
-    with the following keys:
-    'name': the given name
-    'email': if email is given use it otherwise use <name>@example.com
-             in lowercase, you can use the `s.lower()` method
-    'grade': initialize with empty list
-    """
+   if(email==None):
+      nameLower=name.lower()
+      email=f'<{nameLower}>@example.com'
+      newStudent={'name':name,'email':email,'grades':[]}
+   else:
+      newStudent={'name':name,'email':email,'grades':[]}
+   classroom.append(newStudent)
     pass
 
 
 def delete_student(name):
-    """Delete a student from the classroom"""
+    if(helper(name)!=-1):
+      index=helper(name)
+      del classroom[index]
     pass
 
 
 def set_email(name, email):
-    """Sets the email of the student"""
+    if(helper(name)!=-1):
+        index=helper(name)
+        classroom[index]['email']=email
     pass
 
 
 def add_grade(name, profession, grade):
-    """Adds a new grade to the student grades"""
+     if(helper(name)!=-1):
+        index=helper(name)
+        classroom[index]['grades'].append((profession,grade))
     pass
 
 
 def avg_grade(name, profession):
-    """Returns the average of grades of the student
-    in the specified profession
-    """
+    if(helper(name)!=-1):
+        index=helper(name)
+        sumGrade=0
+        countGrade=0
+        for i in classroom[index]['grades']:
+            if(i[0]==profession):
+              countGrade+=1
+              sumGrade+=i[1]
+        return sumGrade/countGrade
     pass
 
 
 def get_professions(name):
-    """Returns a list of unique professions that student has grades in"""
+     if(helper(name)!=-1):
+        index=helper(name)
+        l=[]
+        for i in classroom[index]['grades']:
+            if(l.__contains__(i[0])==False):
+              l.append(i[0])
+        return l
     pass
