@@ -40,7 +40,7 @@ def helper(name):
             return count
         count+=1
     return -1 
-    pass
+    
 def add_student(name, email=None):
    if(email==None):
       nameLower=name.lower()
@@ -49,28 +49,28 @@ def add_student(name, email=None):
    else:
       newStudent={'name':name,'email':email,'grades':[]}
    classroom.append(newStudent)
-    pass
+    
 
 
 def delete_student(name):
     if(helper(name)!=-1):
       index=helper(name)
       del classroom[index]
-    pass
+    
 
 
 def set_email(name, email):
     if(helper(name)!=-1):
         index=helper(name)
         classroom[index]['email']=email
-    pass
+    
 
 
 def add_grade(name, profession, grade):
      if(helper(name)!=-1):
         index=helper(name)
         classroom[index]['grades'].append((profession,grade))
-    pass
+    
 
 
 def avg_grade(name, profession):
@@ -83,7 +83,7 @@ def avg_grade(name, profession):
               countGrade+=1
               sumGrade+=i[1]
         return sumGrade/countGrade
-    pass
+    
 
 
 def get_professions(name):
