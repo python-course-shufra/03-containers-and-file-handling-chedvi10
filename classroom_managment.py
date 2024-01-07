@@ -32,15 +32,6 @@ classroom = [
         ],
     },
 ]
-
-def helper(name):
-    count=0
-    for i in classroom:
-        if(i['name']==name):
-            return count
-        count+=1
-    return -1 
-    
 def add_student(name, email=None):
    if(email==None):
       nameLower=name.lower()
@@ -50,8 +41,14 @@ def add_student(name, email=None):
       newStudent={'name':name,'email':email,'grades':[]}
    classroom.append(newStudent)
     
-
-
+def helper(name):
+    count=0
+    for i in classroom:
+        if(i['name']==name):
+            return count
+        count+=1
+    return -1 
+    
 def delete_student(name):
     if(helper(name)!=-1):
       index=helper(name)
@@ -94,4 +91,4 @@ def get_professions(name):
             if(l.__contains__(i[0])==False):
               l.append(i[0])
         return l
-    pass
+    
