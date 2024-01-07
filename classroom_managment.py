@@ -35,7 +35,7 @@ classroom = [
 def add_student(name, email=None):
    if(email==None):
       nameLower=name.lower()
-      email=f'<{nameLower}>@example.com'
+      email=f'{nameLower}@example.com'
       newStudent={'name':name,'email':email,'grades':[]}
    else:
       newStudent={'name':name,'email':email,'grades':[]}
